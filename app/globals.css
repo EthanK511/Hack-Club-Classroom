@@ -20,8 +20,17 @@
     font-style: normal;
     font-display: swap;
   }
+
+  body {
+    font-family: 'Phantom Sans', system-ui, sans-serif;
+    transition-property: color, background-color;
+    transition-duration: 200ms;
+  }
 }
 
-body {
-  font-family: 'Phantom Sans', system-ui, sans-serif;
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
 }
+
+

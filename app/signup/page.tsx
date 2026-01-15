@@ -51,7 +51,7 @@ function SignupForm() {
         {/* Signup Form */}
         <div className="bg-white rounded-2xl shadow-2xl p-8 border-4 border-hack-dark">
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border-2 border-hack-red rounded-lg">
+            <div className="mb-6 p-4 bg-red-50 border-2 border-hack-red rounded-xl">
               <p className="text-hack-red font-bold">{error}</p>
             </div>
           )}
@@ -65,7 +65,7 @@ function SignupForm() {
                 <button
                   type="button"
                   onClick={() => setRole('teacher')}
-                  className={`py-3 px-4 rounded-lg font-bold transition-all ${
+                  className={`py-3 px-4 rounded-xl font-bold transition-all ${
                     role === 'teacher'
                       ? 'bg-hack-red text-white border-2 border-hack-red'
                       : 'bg-gray-100 text-gray-700 border-2 border-gray-300 hover:border-hack-red'
@@ -76,7 +76,7 @@ function SignupForm() {
                 <button
                   type="button"
                   onClick={() => setRole('student')}
-                  className={`py-3 px-4 rounded-lg font-bold transition-all ${
+                  className={`py-3 px-4 rounded-xl font-bold transition-all ${
                     role === 'student'
                       ? 'bg-hack-red text-white border-2 border-hack-red'
                       : 'bg-gray-100 text-gray-700 border-2 border-gray-300 hover:border-hack-red'
@@ -96,7 +96,7 @@ function SignupForm() {
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-hack-red focus:outline-none transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-hack-red focus:outline-none transition-colors"
                 placeholder="John Doe"
                 required
               />
@@ -111,7 +111,7 @@ function SignupForm() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-hack-red focus:outline-none transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-hack-red focus:outline-none transition-colors"
                 placeholder="you@example.com"
                 required
               />
@@ -126,7 +126,7 @@ function SignupForm() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-hack-red focus:outline-none transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-hack-red focus:outline-none transition-colors"
                 placeholder="••••••••"
                 required
                 minLength={8}
@@ -142,7 +142,7 @@ function SignupForm() {
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-hack-red focus:outline-none transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-hack-red focus:outline-none transition-colors"
                 placeholder="••••••••"
                 required
                 minLength={8}
@@ -151,7 +151,7 @@ function SignupForm() {
 
             <button
               type="submit"
-              className="w-full bg-hack-red text-white py-3 rounded-lg font-bold text-lg hover:bg-red-600 transition-colors"
+              className="w-full bg-hack-red text-white py-3 rounded-full font-bold text-lg shadow-md hover:shadow-lg hover:bg-red-600 transition-colors"
             >
               Create Account
             </button>
