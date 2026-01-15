@@ -17,6 +17,7 @@ export default function AssignmentPage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [comment, setComment] = useState('')
   const [isTeacher] = useState(false) // Toggle for demo
+  const [submitted, setSubmitted] = useState(false)
 
   // Mock data
   const assignment = {
@@ -42,7 +43,8 @@ export default function AssignmentPage() {
 
   const handleSubmit = () => {
     // Handle submission
-    alert('Assignment submitted successfully!')
+    setSubmitted(true)
+    setTimeout(() => setSubmitted(false), 3000)
     setSelectedFile(null)
     setComment('')
   }
@@ -148,6 +150,16 @@ export default function AssignmentPage() {
                 <h2 className="text-xl font-bold text-hack-dark mb-6">Your Work</h2>
 
                 <div className="space-y-6">
+                  {/* Success Message */}
+                  {submitted && (
+                    <div className="p-4 bg-green-50 border-2 border-hack-green rounded-lg">
+                      <div className="flex items-center space-x-2 text-green-800">
+                        <span className="text-2xl">✅</span>
+                        <span className="font-bold">Assignment submitted successfully!</span>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Status */}
                   <div className="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg">
                     <div className="flex items-center space-x-2 text-yellow-800">

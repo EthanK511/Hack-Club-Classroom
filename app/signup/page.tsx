@@ -12,6 +12,7 @@ function SignupForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const roleParam = searchParams.get('role')
@@ -22,8 +23,9 @@ function SignupForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    setError('')
     if (password !== confirmPassword) {
-      alert('Passwords do not match!')
+      setError('Passwords do not match!')
       return
     }
     // For demo purposes, redirect to dashboard
@@ -48,6 +50,11 @@ function SignupForm() {
 
         {/* Signup Form */}
         <div className="bg-white rounded-2xl shadow-2xl p-8 border-4 border-hack-dark">
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border-2 border-hack-red rounded-lg">
+              <p className="text-hack-red font-bold">{error}</p>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Role Selection */}
             <div>
