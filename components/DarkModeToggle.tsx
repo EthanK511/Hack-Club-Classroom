@@ -4,26 +4,55 @@ import { useEffect, useState } from 'react'
 
 export default function DarkModeToggle() {
   const [darkMode, setDarkMode] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     // Check if dark mode preference is saved
-    const isDark = localStorage.getItem('darkMode') === 'true'
-    setDarkMode(isDark)
-    if (isDark) {
-      document.documentElement.classList.add('dark')
+    if (typeof window !== 'undefined') {
+      try {
+        const isDark = localStorage.getItem('darkMode') === 'true'
+        setDarkMode(isDark)
+        if (isDark) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch (e) {
+        console.error('Failed to access localStorage:', e)
+      }
     }
   }, [])
 
   const toggleDarkMode = () => {
     const newMode = !darkMode
     setDarkMode(newMode)
-    localStorage.setItem('darkMode', newMode.toString())
+    
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('darkMode', newMode.toString())
+      } catch (e) {
+        console.error('Failed to save to localStorage:', e)
+      }
+    }
     
     if (newMode) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
+  }
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <button
+        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        aria-label="Toggle dark mode"
+      >
+        <svg className="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+      </button>
+    )
   }
 
   return (

@@ -27,7 +27,9 @@ export default function DashboardPage() {
   const handleCreateClass = () => {
     if (newClassName && newClassSection) {
       const colors = ['bg-hack-red', 'bg-hack-blue', 'bg-hack-green', 'bg-hack-yellow']
-      const randomColor = colors[Math.floor(Math.random() * colors.length)]
+      // Use class count to cycle through colors predictably
+      const colorIndex = classes.length % colors.length
+      const assignedColor = colors[colorIndex]
       
       const newClass: Class = {
         id: Date.now().toString(),
@@ -36,7 +38,7 @@ export default function DashboardPage() {
         subject: newClassSubject || 'General',
         room: newClassRoom || 'Online',
         teacher: 'You',
-        color: randomColor
+        color: assignedColor
       }
       
       setClasses([...classes, newClass])
